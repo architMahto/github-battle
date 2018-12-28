@@ -1,10 +1,12 @@
 var React = require('react');
 
+var PopularRepositories = require('./Components/PopularRepositories');
+
 class App extends React.Component {
 	render() {
 		return (
-			<div>
-				Hello Github Battle!
+			<div className='container'>
+				<PopularRepositories />
 			</div>
 		);
 	}
