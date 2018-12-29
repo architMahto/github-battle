@@ -1,5 +1,8 @@
 var React = require('react');
 
+var ReposService = require('../Services/ReposService');
+
+var RepositoryList = require('../Components/RepositoryList');
 var SelectLanguage = require('../Components/SelectLanguage');
 
 class Popular extends React.Component {
@@ -7,16 +10,28 @@ class Popular extends React.Component {
 		super(props);
 
 		this.state = {
-			selectedLanguage: 'All'
+			selectedLanguage: 'All',
+			repos: null
 		};
 
 		this.updateLanguage = this.updateLanguage.bind(this);
 	}
 
+	componentDidMount() {
+		this.updateLanguage(this.state.selectedLanguage);
+	}
+
 	updateLanguage(lang) {
 		this.setState(function () {
-			return { selectedLanguage: lang };
+			return { selectedLanguage: lang, repos: null };
 		});
+
+		ReposService.fetchPopularRepos(lang)
+			.then(function (repos) {
+				this.setState(function () {
+					return { repos: repos };
+				});
+			}.bind(this));
 	}
 
 	render() {
@@ -25,6 +40,7 @@ class Popular extends React.Component {
 				<SelectLanguage
 					selectedLanguage={this.state.selectedLanguage}
 					onSelect={this.updateLanguage} />
+				{!this.state.repos ? <p>Loading</p> : <RepositoryList repos={this.state.repos}/>}
 			</div>
 		);
 	}
