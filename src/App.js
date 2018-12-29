@@ -1,12 +1,12 @@
 var React = require('react');
 
-var PopularRepositories = require('./Components/PopularRepositories');
+var Popular = require('./Pages/Popular');
 
 class App extends React.Component {
 	render() {
 		return (
 			<div className='container'>
-				<PopularRepositories />
+				<Popular />
 			</div>
 		);
 	}

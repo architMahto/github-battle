@@ -1,8 +1,8 @@
 var React = require('react');
 
-var SelectLanguage = require('./SelectLanguage');
+var SelectLanguage = require('../Components/SelectLanguage');
 
-class PopularRepositories extends React.Component {
+class Popular extends React.Component {
 	constructor (props) {
 		super(props);
 
@@ -30,4 +30,4 @@ class PopularRepositories extends React.Component {
 	}
 }
 
-module.exports = PopularRepositories;
+module.exports = Popular;
