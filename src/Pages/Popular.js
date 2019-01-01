@@ -1,6 +1,6 @@
 var React = require('react');
 
-var ReposService = require('../Services/ReposService');
+var GithubApiService = require('../Services/GithubApiService');
 
 var RepositoryList = require('../Components/RepositoryList');
 var SelectLanguage = require('../Components/SelectLanguage');
@@ -26,7 +26,7 @@ class Popular extends React.Component {
 			return { selectedLanguage: lang, repos: null };
 		});
 
-		ReposService.fetchPopularRepos(lang)
+		GithubApiService.fetchPopularRepos(lang)
 			.then(function (repos) {
 				this.setState(function () {
 					return { repos: repos };
