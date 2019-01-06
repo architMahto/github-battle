@@ -9,7 +9,7 @@ class Results extends React.Component {
 
 	render() {
 		return (
-			<div>Results</div>
+			<div>{process.env.REACT_APP_GITHUB_API_CLIENT_ID}</div>
 		);
 	}
 }
