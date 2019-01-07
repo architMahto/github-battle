@@ -5,6 +5,7 @@ var queryString = require('query-string');
 
 var GithubApiService = require('../Services/GithubApiService');
 
+var Loading = require('../Components/Loading');
 var PlayerProfile = require('../Components/PlayerProfile');
 
 class Results extends React.Component {
@@ -53,7 +54,7 @@ class Results extends React.Component {
 		var loading = this.state.loading;
 
 		if (loading === true) {
-			return <p>Loading</p>;
+			return <Loading />;
 		}
 
 		if (error) {

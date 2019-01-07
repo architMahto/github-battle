@@ -2,6 +2,7 @@ var React = require('react');
 
 var GithubApiService = require('../Services/GithubApiService');
 
+var Loading = require('../Components/Loading');
 var RepositoryList = require('../Components/RepositoryList');
 var SelectLanguage = require('../Components/SelectLanguage');
 
@@ -40,7 +41,9 @@ class Popular extends React.Component {
 				<SelectLanguage
 					selectedLanguage={this.state.selectedLanguage}
 					onSelect={this.updateLanguage} />
-				{!this.state.repos ? <p>Loading</p> : <RepositoryList repos={this.state.repos}/>}
+				{!this.state.repos ?
+					<Loading /> :
+					<RepositoryList repos={this.state.repos}/>}
 			</div>
 		);
 	}
