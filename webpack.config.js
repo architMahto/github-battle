@@ -43,5 +43,5 @@ module.exports = {
 		}),
 		new webpack.DefinePlugin(envKeys)
 	],
-	mode: 'development',
+	mode: process.env.NODE_ENV === 'production' ? 'production' : 'development',
 };
